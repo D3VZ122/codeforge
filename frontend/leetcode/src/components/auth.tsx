@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "./button";
 import LabbeledInputs from "./input";
 import axios from "axios";

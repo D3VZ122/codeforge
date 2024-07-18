@@ -30,9 +30,7 @@ export default function ProblemSingle() {
 
   const { id } = useParams();
 
-  function onChange(newValue) {
-    console.log("change", newValue);
-  }
+ 
 
   function handleSubmit() {
     // Add your submit logic here
@@ -61,7 +59,7 @@ export default function ProblemSingle() {
             className="mt-2 rounded-lg m-10"
             mode={lang}
             theme="dracula"
-            onChange={onChange}
+           
             name="UNIQUE_ID_OF_DIV"
             width="90%"
             editorProps={{ $blockScrolling: true }}

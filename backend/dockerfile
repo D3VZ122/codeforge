@@ -1,0 +1,11 @@
+# Use a minimal base image
+FROM alpine:latest
+
+# Install necessary packages to compile and run C++ code
+RUN apk add --no-cache g++ make
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Command to run the compiled executable
+CMD ["sh", "-c", "g++ -o app main.cpp && ./app"]

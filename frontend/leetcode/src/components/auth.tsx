@@ -33,7 +33,7 @@ export default function Auth({ type }: AuthType) {
 
     
     const server = import.meta.env.VITE_backend_url;
-    
+    console.log(server);
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
      

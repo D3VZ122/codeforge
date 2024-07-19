@@ -6,9 +6,8 @@ const cookieParser = require('cookie-parser');
 // Configure CORS
 const corsOptions = {
     origin: 'https://codeforge-1.onrender.com', // Specify the allowed origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
     credentials: true, // Allow credentials
-    optionsSuccessStatus: 204 // Use a 204 status for successful OPTIONS requests
+  
 };
 
 app.use(cors(corsOptions));

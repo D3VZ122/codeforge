@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { RecoilState, useRecoilState, useResetRecoilState } from "recoil";
+import {useSetRecoilState } from "recoil";
 import { isauthenticated } from "../../store/recoil";
 
 interface AuthType {
@@ -23,7 +23,7 @@ interface UserDataType {
 
 export default function Auth({ type }: AuthType) {
     const navigate = useNavigate();
-    const [auth,setauth] = useRecoilState(isauthenticated)
+    const setauth = useSetRecoilState(isauthenticated)
   
     const [userData, setUserData] = useState<UserDataType>({
         username: "",

@@ -138,48 +138,49 @@ router.post("/otp-verification", async (req, res) => {
 });
 
 
-router.post("/signin",async(req,res)=>{
-    
-    const {username,password} = req.body;
-    const resp = await db.user.findFirst({
-        where:{
-            username:username
-        }
-    })
-    if(resp&&resp.isverified){
-        if(resp.password==password){
-            const token = jwt.sign(resp.id,process.env.jwt_secret);
-            
-            res.cookie('token',token,{
-                secure:true,
-                sameSite:'none'
-            });
-            return res.status(200).json({
-                success:true
-            });
+    router.post("/signin",async(req,res)=>{
+        
+        const {username,password} = req.body;
+        const resp = await db.user.findFirst({
+            where:{
+                username:username
+            }
+        })
+        if(resp&&resp.isverified){
+            if(resp.password==password){
+                const token = jwt.sign(resp.id,process.env.jwt_secret);
+                
+                res.cookie('token',token,{
+                    secure:true,
+                    sameSite:'none',
+                    httpOnly:true
+                });
+                return res.status(200).json({
+                    success:true
+                });
+            }
+            else{
+                return res.status(400).json({
+                    success:false,
+                    message:"wrong password"
+                })
+            }
         }
         else{
-            return res.status(400).json({
+            res.status(401).json({
                 success:false,
-                message:"wrong password"
+                message:"Pls singup"
             })
         }
-    }
-    else{
-        res.status(401).json({
-            success:false,
-            message:"Pls singup"
-        })
-    }
-})
+    })
 
 
-router.get("/logout",async(req,res)=>{
-    res.clearCookie('token',{
-         secure:true,
-         sameSite:'none'
-    });
-    res.json({success:true,message:"logout Successfully"});
-})
+    router.get("/logout",async(req,res)=>{
+        res.clearCookie('token',{
+            secure:true,
+            sameSite:'none'
+        });
+        res.json({success:true,message:"logout Successfully"});
+    })
 
 module.exports = router;

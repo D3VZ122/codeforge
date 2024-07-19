@@ -5,7 +5,7 @@ const rootrouter = require("./db/index");
 const cookieParser = require('cookie-parser');
 // Configure CORS
 const corsOptions = {
-    origin: 'https://codeforge-1.onrender.com',
+    origin: 'https://codeforge-khaki.vercel.app',
     credentials: true, 
   
 };

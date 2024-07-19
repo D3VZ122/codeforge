@@ -1,10 +1,13 @@
-import { useRecoilValue } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 
 import  {isauthenticated} from "../../store/recoil"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Topbar(){
-    const isauth = useRecoilValue(isauthenticated);
+    const [isauth,setauth] = useRecoilState(isauthenticated);
+    const server = import.meta.env.VITE_backend_url;
+    const navigation = useNavigate();
     return(
         <>
         <header>
@@ -20,8 +23,17 @@ export default function Topbar(){
         {isauth?<Link to={"/problem"}><div className="font-medium mr-2">Start Solving</div></Link>:null}
         {isauth==false?
         <Link to={"/signin"}><div className="font-medium mr-2">Login</div></Link>:
-        <Link to={"/profile"}><div className="font-medium mr-2">Name</div></Link>
-          
+        <button onClick={async()=>{
+            const resp = await axios.get(server+'/api/v1/user/'+"logout",{
+                withCredentials:true
+            });
+            if(resp.data.success==true){
+                setauth(false);
+                navigation("/signin");
+            }
+            
+            
+        }}>Logout</button>
         }
 
           </div>

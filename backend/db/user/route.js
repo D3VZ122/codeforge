@@ -156,7 +156,7 @@ router.post("/signin",async(req,res)=>{
             });
             return res.status(200).json({
                 success:true
-            })
+            });
         }
         else{
             return res.status(400).json({
@@ -171,6 +171,12 @@ router.post("/signin",async(req,res)=>{
             message:"Pls singup"
         })
     }
+})
+
+
+router.post("/logout",async(req,res)=>{
+    res.clearCookie('token');
+    res.json({success:true,message:"logout Successfully"});
 })
 
 module.exports = router;

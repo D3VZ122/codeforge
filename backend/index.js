@@ -5,8 +5,8 @@ const rootrouter = require("./db/index");
 const cookieParser = require('cookie-parser');
 // Configure CORS
 const corsOptions = {
-    origin: 'https://codeforge-1.onrender.com', // Specify the allowed origin
-    credentials: true, // Allow credentials
+    origin: 'https://codeforge-1.onrender.com',
+    credentials: true, 
   
 };
 

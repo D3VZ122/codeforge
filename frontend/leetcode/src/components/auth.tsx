@@ -6,6 +6,8 @@ import { useNavigate } from "react-router";
 
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RecoilState, useRecoilState, useResetRecoilState } from "recoil";
+import { isauthenticated } from "../../store/recoil";
 
 interface AuthType {
     type: string;
@@ -21,6 +23,7 @@ interface UserDataType {
 
 export default function Auth({ type }: AuthType) {
     const navigate = useNavigate();
+    const [auth,setauth] = useRecoilState(isauthenticated)
   
     const [userData, setUserData] = useState<UserDataType>({
         username: "",
@@ -40,7 +43,7 @@ export default function Auth({ type }: AuthType) {
                 });
                 
            if(type=="signin"&&resp.data.success==true){
-           
+            setauth(true);
             navigate("/home");
            }
            else if(resp.data.success==true&&type=="signup"){

@@ -151,7 +151,6 @@ router.post("/signin",async(req,res)=>{
             const token = jwt.sign(resp.id,process.env.jwt_secret);
             
             res.cookie('token',token,{
-                secure:true,
                 sameSite:'none'
             });
             return res.status(200).json({

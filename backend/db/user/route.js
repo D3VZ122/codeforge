@@ -174,7 +174,7 @@ router.post("/signin",async(req,res)=>{
 })
 
 
-router.post("/logout",async(req,res)=>{
+router.get("/logout",async(req,res)=>{
     res.clearCookie('token');
     res.json({success:true,message:"logout Successfully"});
 })

@@ -15,7 +15,7 @@ const router = express.Router();
 
 const codeexec = process.env.Exec_Link;
 
-router.post("/subm",middleware, async (req, res) => {
+router.post("/subm", async (req, res) => {
     const { code, language,probid,userid } = req.body;
   console.log(code);
     

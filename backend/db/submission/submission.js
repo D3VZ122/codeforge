@@ -26,7 +26,7 @@ router.post("/subm",middleware, async (req, res) => {
             }
         });
       
-        const resp = await axios.post("/run/" + language, { code, inputs });
+        const resp = await axios.post(codeexec+"/run/" + language, { code, inputs });
         const data = resp.data;
         await db.submission.create({
             data:{

@@ -13,7 +13,7 @@ const router = express.Router();
 
 
 
-
+const codeexec = process.env.Exec_Link;
 
 router.post("/subm",middleware, async (req, res) => {
     const { code, language,probid,userid } = req.body;
@@ -26,7 +26,7 @@ router.post("/subm",middleware, async (req, res) => {
             }
         });
       
-        const resp = await axios.post("http://localhost:4001/run/" + language, { code, inputs });
+        const resp = await axios.post("/run/" + language, { code, inputs });
         const data = resp.data;
         await db.submission.create({
             data:{

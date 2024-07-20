@@ -71,7 +71,7 @@ export default function CodeEditor() {
                         toast("Please write some code");
                     } else {
                         try {
-                            const resp = await axios.post(server + "/api/v1/submission/test", {
+                            const resp = await axios.post(server + "/api/v1/submission/subm", {
                                 code,
                                 language: lang,
                                 inputs: input

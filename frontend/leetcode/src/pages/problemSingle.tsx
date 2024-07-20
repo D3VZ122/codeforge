@@ -7,6 +7,7 @@ import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
+import { toast } from "react-toastify";
 
 interface resptype {
   question: string;
@@ -15,6 +16,7 @@ interface resptype {
 
 export default function ProblemSingle() {
   const server = import.meta.env.VITE_backend_url;
+
   const [ques, setQuest] = useState<resptype>({
     question: "",
     description: ""
@@ -33,8 +35,20 @@ export default function ProblemSingle() {
 
  
 
-  function handleSubmit() {
-    console.log(code);
+  async function handleSubmit() {
+      try{
+        const resp = await axios.post(server+"/api/v1/submission/subm",{
+          code:code,
+          language:lang,
+          probid:id
+        },{
+          withCredentials:true
+        })
+        toast(resp.data);
+      }
+      catch(error){
+        toast("somthing went wrong");
+      }
   }
 
   return (

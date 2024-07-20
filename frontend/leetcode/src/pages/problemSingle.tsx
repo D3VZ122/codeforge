@@ -20,6 +20,7 @@ export default function ProblemSingle() {
     description: ""
   });
   const [lang, setLanguage] = useState("c_cpp");
+  const [code, setCode] = useState("c_cpp");
   useEffect(() => {
     const getData = async () => {
       const resp = await axios.get(server + "/api/v1/problem/" + id);
@@ -33,7 +34,7 @@ export default function ProblemSingle() {
  
 
   function handleSubmit() {
-    // Add your submit logic here
+    console.log(code);
   }
 
   return (
@@ -59,7 +60,7 @@ export default function ProblemSingle() {
             className="mt-2 rounded-lg m-10"
             mode={lang}
             theme="dracula"
-           
+            onChange={(e) => setCode(e)}
             name="UNIQUE_ID_OF_DIV"
             width="90%"
             editorProps={{ $blockScrolling: true }}
@@ -68,6 +69,7 @@ export default function ProblemSingle() {
               enableLiveAutocompletion: true,
               enableSnippets: true,
               enableMultiselect: true
+              
             }}
           />
         </div>

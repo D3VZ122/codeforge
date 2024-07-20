@@ -15,9 +15,9 @@ const router = express.Router();
 
 const codeexec = process.env.Exec_Link;
 
-router.post("/subm", async (req, res) => {
+router.post("/subm",middleware, async (req, res) => {
     const { code, language,probid,userid } = req.body;
-  console.log(code);
+  
     
     try {
         inputs =  await db.testCase.findMany({
@@ -28,7 +28,6 @@ router.post("/subm", async (req, res) => {
       
         const resp = await axios.post(codeexec+"/run/" + language, { code, inputs });
         const data = resp.data;
-        console.log(data);
         await db.submission.create({
             data:{
                 code:code,

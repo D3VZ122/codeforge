@@ -23,6 +23,11 @@ export default function ProblemSingle() {
   });
   const [lang, setLanguage] = useState("c_cpp");
   const [code, setCode] = useState("c_cpp");
+  const [output,setoutput] = useState({
+    success:false,
+    status:"wrong",
+    testcases:""
+  });
   useEffect(() => {
     const getData = async () => {
       const resp = await axios.get(server + "/api/v1/problem/" + id);
@@ -44,7 +49,7 @@ export default function ProblemSingle() {
         },{
           withCredentials:true
         })
-        toast(resp.data);
+        toast(resp.data.success);
       }
       catch(error){
         toast("somthing went wrong");

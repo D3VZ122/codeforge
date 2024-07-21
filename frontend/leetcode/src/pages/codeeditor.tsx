@@ -46,7 +46,7 @@ export default function CodeEditor() {
                 editorProps={{ $blockScrolling: true }}
                 setOptions={{
                     enableBasicAutocompletion: true,
-                    enableLiveAutocompletion: true,
+                    enableLiveAutocompletion: true, 
                     enableSnippets: true,
                     enableMultiselect: true
                 }}

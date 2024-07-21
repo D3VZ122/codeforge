@@ -12,10 +12,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/v1", rootrouter);
 
-app.use(cookieParser());
+
 
 
 app.listen(3001, () => {

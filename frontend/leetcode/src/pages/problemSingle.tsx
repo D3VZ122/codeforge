@@ -28,6 +28,7 @@ export default function ProblemSingle() {
     status:"wrong",
     testcases:""
   });
+  {console.log(output);}
   useEffect(() => {
     const getData = async () => {
       const resp = await axios.get(server + "/api/v1/problem/" + id);
@@ -129,7 +130,7 @@ target = 9
               <h2 className="text-lg font-medium mb-2">Result</h2>
               <div className="bg-gray-900 text-white rounded-lg p-4 h-32 overflow-auto">
                 <pre className="whitespace-pre-wrap" />
-                {output.status}
+             
               </div>
             </div>
       </div>

@@ -39,7 +39,7 @@ export default function ProblemSingle() {
   const { id } = useParams();
 
  
-
+{console.log(output.status)}
   async function handleSubmit() {
       try{
         const resp = await axios.post(server+"/api/v1/submission/subm",{

@@ -15,6 +15,8 @@ app.use(express.json());
 
 app.use("/api/v1", rootrouter);
 
+app.use(cookieParser());
+
 
 app.listen(3001, () => {
     console.log("App listening on 3001");

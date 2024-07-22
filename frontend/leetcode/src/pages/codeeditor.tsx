@@ -71,16 +71,16 @@ export default function CodeEditor() {
                         toast("Please write some code");
                     } else {
                         try {
-                            const resp = await axios.post(server + "/api/v1/submission/subm", {
+                            const resp = await axios.post(server + "/api/v1/submission/test", {
                                 code,
                                 language: lang,
                                 inputs: input
                             });
+                            console.log(resp.data.data);
                             setOutput(resp.data.data);
 
                         } catch (error) {
                             console.error("Error submitting code:", error);
-
                             toast.error("Error submitting code");
                         }
                     }

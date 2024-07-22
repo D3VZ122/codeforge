@@ -15,6 +15,19 @@ const router = express.Router();
 
 const codeexec = process.env.Exec_Link;
 
+router.post("/test",async(req,res)=>{
+    const {code,language,inputs} = req.body;
+
+    try{
+        const resp = await axios.post(codeexec+"/run/"+language,{code,inputs});
+        const data = resp.data;
+        return res.json({data});
+    }       
+    catch(error){
+        return res.json({success:false})
+    }
+})
+
 router.post("/subm",middleware, async (req, res) => {
     const { code, language,probid,userid } = req.body;
         
